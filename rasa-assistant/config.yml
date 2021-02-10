@@ -1,0 +1,29 @@
+language: "es"
+
+policies:
+  - name: MemoizationPolicy
+  - name: TEDPolicy
+    max_history: 5
+    epochs: 100
+  - name: RulePolicy
+
+pipeline:
+  - name: WhitespaceTokenizer
+  - name: RegexEntityExtractor
+    case_sensitive: False
+    use_lookup_tables: True
+    use_regexes: True
+  - name: LexicalSyntacticFeaturizer
+  - name: CountVectorsFeaturizer
+  - name: CountVectorsFeaturizer
+    analyzer: "char_wb"
+    min_ngram: 1
+    max_ngram: 4
+  - name: "CRFEntityExtractor"
+  - name: DIETClassifier
+    batch_strategy: sequence
+    entity_recognition: False
+    epochs: 50
+  - name: EntitySynonymMapper
+  - name: FallbackClassifier
+    threshold: 0.1

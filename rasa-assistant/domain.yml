@@ -1,0 +1,131 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - agradecer
+  - despedir
+  - explicacion_tema
+  - mostrar_desanimo
+  - mostrar_desconocimiento
+  - mostrar_disconformidad
+  - mostrar_entendimiento
+  - mostrar_mejora
+  - pedir_ejemplos
+  - saber_tareas
+  - ver_avance_scrum
+  - decidir_explicacion
+  - dar_nombre
+  - dar_tema
+
+entities:
+  - desarrollador
+  - tema
+  - animo
+  - tema_mencionado
+  - nombre_dado
+
+slots:
+  desarrollador:
+    type: text
+  tema:
+    type: text
+  tema_mencionado:
+    type: bool
+    initial_value: false
+  nombre_dado:
+    type: bool
+    initial_value: false
+
+actions:
+  - action_mis_tareas
+  - action_dar_tarea
+  - action_submit
+  - action_asignar_tarea
+  - action_explicar_tema
+  - action_animo_desconocimiento
+  - action_animo_disconformidad
+  - action_animo_desanimo
+  - action_animo_mejora_entendimiento
+  - action_dar_ejemplo
+  - action_set_tema_mencionado
+  - action_set_nombre_dado
+
+forms:
+  pedir_nombre_form:
+    desarrollador:
+      - type: from_entity
+        entity: desarrollador
+
+  pedir_tema_form:
+    tema:
+      - type: from_entity
+        entity: tema
+
+responses:
+
+  utter_ask_desarrollador:
+  - text: "Antes necesito saber cual es tu nombre"
+
+  utter_ask_tema:
+  - text: "¿De qué tema?"
+
+  utter_ask_tipo_explicacion:
+  - text: "¿Preferís teoría o ejemplos?"
+
+  utter_ofrecer_ayuda:
+  - text: "Si querés, te puedo ayudar ofreciendote deficiones y ejemplos."
+
+  utter_ofrecer_mas_ayuda:
+  - text: "¿Te puedo ayudar en algo más?"
+
+  utter_felicitar:
+  - text: "Me alegro mucho!"
+
+  utter_ofrecer_ayuda_personalizada:
+  - text: "Bienvenido {desarrollador}, en que te puedo ayudar?"
+
+  utter_tema_no_aclarado:
+  - text: "No me has aclarado de que tema estás hablando."
+
+  utter_default:
+  - text: "Disculpame, no te entendí. ¿Podrías reformular tu mensaje?"
+
+  ###  DEFAULT UTTER
+
+  utter_greet:
+  - text: "Hola! Como estas?"
+
+  utter_personalizado:
+  - text: "Bienvenido!"
+
+  utter_cheer_up:
+  - text: "Here is JEJEJEJE something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "NO SOY UN ROBOT."
+
+  utter_saber_tareas:
+  - text: "Querés saber tus tareas."
+
+  utter_dar_tarea_fija:
+  - text: "Tu tarea es definir las user stories."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

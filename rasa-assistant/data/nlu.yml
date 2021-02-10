@@ -1,0 +1,198 @@
+version: "2.0"
+
+nlu:
+
+- lookup: desarrollador
+  examples: |
+    - Agustina
+    - Camila
+
+- lookup: tema
+  examples: |
+    - user story
+    - burn down
+    - dividir tarea
+    - scrum team
+    - product owner
+    - development team
+    - scrum master
+    - scrum board
+    - scrum artifacts
+    - product backlog
+    - sprint backlog
+    - increment
+    - etapas scrum
+    - sprint
+    - sprint planning
+    - daily scrum
+    - sprint review
+    - sprint retrospective
+
+- intent: greet
+  examples: |
+    - hey 
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: agradecer
+  examples: |
+    - estoy agradecido
+    - gracias
+    - muy amable
+    - no, gracias
+    - te agradezco
+
+- intent: despedir
+  examples: |
+    - adios
+    - despues te escribo
+    - eso es todo
+    - hablamos despues
+    - hasta luego
+    - hasta pronto
+    - muchas gracias, hasta luego
+    - nos vemos
+    - que tengas un buen dia
+    - te agradezco, adios
+    - te escribo luego
+
+- intent: explicacion_tema
+  examples: |
+    - ¿En que consiste?
+    - ¿Podrias desarrollarlo?
+    - ¿Que es?
+    - ¿Que significa?
+    - ¿Que son?
+    - Explicacion
+    - Me podrias dar definiciones?
+    - Me podrias explicar de que se trata?
+    - Necesito la definicion de
+    - Necesito saber que es
+    - Quiero que desarrolles el tema
+    - Quiero que me expliques
+    - Quiero un desarrollo
+    - Teoria
+    - Quiero teoria
+
+- intent: mostrar_desanimo
+  examples: |
+    - Estoy inseguro
+    - Estoy triste
+    - Me siento desanimado
+    - Me siento mal
+    - No es para mi
+    - No me animo
+    - No me siento seguro
+    - No muy bien
+    - No puedo
+    - No sirvo para esto
+
+- intent: mostrar_desconocimiento
+  examples: |
+    - Me fue mal
+    - Me quedaron dudas
+    - No capto bien
+    - No comprendi del todo
+    - No comprendo
+    - No entendi
+    - No entiendo
+    - No lo tengo claro
+    - No me quedó claro
+    - No me quedó claro como dividir mis tareas
+    - No puedo
+    - No se
+    - Sigo con dudas
+    - Sigo sin entender
+    - Tengo dudas
+    - Tengo una duda
+
+- intent: mostrar_disconformidad
+  examples: |
+    - Es aburrido
+    - Estoy disconforme
+    - Lo detesto
+    - Me aburre
+    - No me agrada
+    - No me gusta
+    - No me siento conforme
+    - No quiero hacerlo
+    - No tengo ganas
+    - Quiero hacer otra cosa
+
+- intent: mostrar_entendimiento
+  examples: |
+    - Ahora entiendo
+    - Buenisimo
+    - Clarisimo
+    - Creo que entendi
+    - Entendidisimo
+    - Entendido
+    - Excelente
+    - Me quedo claro
+    - Perfecto
+    - Ya entendi
+
+- intent: mostrar_mejora
+  examples: |
+    - Estoy bien
+    - Estoy feliz
+    - Estoy mas calmado
+    - Estoy mejor
+    - Estoy motivado
+    - Me siento bien
+    - Muy bien
+
+- intent: pedir_ejemplos
+  examples: |
+    - ¿Como por ejemplo?
+    - ¿Como que?
+    - ¿Y como seria?
+    - ¿Como lo harias?
+    - Ejemplo
+    - Ejemplos
+    - Necesito un ejemplo
+    - Quiero un caso real
+    - Tenes otro ejemplo?
+    - Quiero ejemplos
+
+- intent: saber_tareas
+  examples: |
+    - Quiero saber cuales son mis tareas
+    - Mis tareas
+    - ¿Cuales son mis tareas?
+    - ¿Hoy que tengo que hacer?
+    - ¿Que temgp que hacer hoy?
+    - Que debo realizar hoy
+    - Que tengo que hacer
+    - Quiero saber mis tareas
+    - Que me queda por hacer
+
+- intent: ver_avance_scrum
+  examples: |
+    - Como vamos con
+    - Me mostrarias
+    - Que tal vamos
+    - Quiero consultar el [scrum board](tema)
+    - Quiero ver el progreso del [burn down chart](tema)
+    - Ver avances
+
+- intent: dar_nombre
+  examples: |
+    - Mi nombre es [Santiago](desarrollador)
+    - Me llamo [Ana](desarrollador)
+    - Soy [Javier](desarrollador)
+
+- intent: dar_tema
+  examples: |
+    - [user story](tema)
+    - Sobre [dividir tarea](tema)

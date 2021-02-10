@@ -1,0 +1,176 @@
+version: "2.0"
+
+stories:
+
+### Funcionalidad: ofrecer ayuda a desarrollador:
+
+- story: El desarrollador se presenta.
+  steps:
+  - intent: dar_nombre
+    entities:
+      - desarrollador: Santiago
+  - action: utter_ofrecer_ayuda_personalizada
+
+### Funcionalidad: asignar tarea
+
+- story: Asignar tarea.
+  steps:
+  - intent: saber_tareas
+  - slot_was_set:
+    - desarrollador: Santiago
+  - action: action_asignar_tarea
+
+- story: Asignar tarea.
+  steps:
+  - intent: saber_tareas
+  - slot_was_set:
+    - desarrollador: null
+  - action: utter_ask_desarrollador
+  - intent: dar_nombre
+    entities:
+      - desarrollador: Santiago
+  - action: action_asignar_tarea
+
+### Funcionalidad: explicacion
+
+- story: El desarrollador quiere una explicación de un tema que no nombró.
+  steps:
+  - intent: explicacion_tema
+  - slot_was_set:
+    - tema: null
+  - action: utter_tema_no_aclarado
+  - intent: dar_tema
+    entities:
+      - tema: user story
+  - action: action_explicar_tema
+  
+- story: El desarrollador quiere una explicación (del último tema hablado).
+  steps:
+  - intent: explicacion_tema
+  - slot_was_set:
+    - tema: user story
+  - action: action_explicar_tema
+
+### Funcionalidad: ejemplos
+
+- story: El desarrollador quiere un ejemplo de un tema que no nombró.
+  steps:
+  - intent: pedir_ejemplos
+  - slot_was_set:
+    - tema: null
+  - action: utter_tema_no_aclarado
+  - intent: dar_tema
+    entities:
+      - tema: user story
+  - action: action_dar_ejemplo
+  
+- story: El desarrollador quiere un ejemplo (del último tema hablado).
+  steps:
+  - intent: pedir_ejemplos
+  - slot_was_set:
+    - tema: user story
+  - action: action_dar_ejemplo
+
+### Funcionalidad: manejo de emociones
+
+- story: El desarrollador no entiende un tema (nombre dado)
+  steps:
+  - intent: mostrar_desconocimiento
+  - slot_was_set:
+    - desarrollador: Santiago
+  - action: action_animo_desconocimiento
+  - action: utter_ofrecer_ayuda
+
+- story: El desarrollador no entiende un tema (nombre no dado)
+  steps:
+  - intent: mostrar_desconocimiento
+  - slot_was_set:
+    - desarrollador: null
+  - action: utter_ask_desarrollador
+  - intent: dar_nombre
+    entities:
+      - desarrollador: Santiago
+  - action: action_animo_desconocimiento
+  - action: utter_ofrecer_ayuda
+
+- story: El desarrollador está disconforme (nombre dado)
+  steps:
+  - intent: mostrar_disconformidad
+  - slot_was_set:
+    - desarrollador: Santiago
+  - action: action_animo_disconformidad
+  - action: utter_ofrecer_ayuda
+
+- story: El desarrollador está disconforme (nombre no dado)
+  steps:
+  - intent: mostrar_disconformidad
+  - slot_was_set:
+    - desarrollador: null
+  - action: utter_ask_desarrollador
+  - intent: dar_nombre
+    entities:
+      - desarrollador: Santiago
+  - action: action_animo_disconformidad
+  - action: utter_ofrecer_ayuda
+
+- story: El desarrollador está desanimado (nombre dado)
+  steps:
+  - intent: mostrar_desanimo
+  - slot_was_set:
+    - desarrollador: Santiago
+  - action: action_animo_desanimo
+  - action: utter_ofrecer_ayuda
+
+- story: El desarrollador está desanimado (nombre no dado)
+  steps:
+  - intent: mostrar_desanimo
+  - slot_was_set:
+    - desarrollador: null
+  - action: utter_ask_desarrollador
+  - intent: dar_nombre
+    entities:
+      - desarrollador: Santiago
+  - action: action_animo_desanimo
+  - action: utter_ofrecer_ayuda
+
+- story: El desarrollador entendió (nombre dado)
+  steps:
+  - intent: mostrar_entendimiento
+  - slot_was_set:
+    - desarrollador: Santiago
+  - action: action_animo_mejora_entendimiento
+
+- story: El desarrollador entendió (nombre no dado)
+  steps:
+  - intent: mostrar_entendimiento
+  - slot_was_set:
+    - desarrollador: null
+  - action: utter_ask_desarrollador
+  - intent: dar_nombre
+    entities:
+      - desarrollador: Santiago
+  - action: action_animo_mejora_entendimiento
+
+- story: El desarrollador entendió 2 (nombre dado)
+  steps:
+  - intent: mostrar_mejora
+  - slot_was_set:
+    - desarrollador: Santiago
+  - action: action_animo_mejora_entendimiento
+
+- story: El desarrollador entendió 2 (nombre no dado)
+  steps:
+  - intent: mostrar_mejora
+  - slot_was_set:
+    - desarrollador: null
+  - action: utter_ask_desarrollador
+  - intent: dar_nombre
+    entities:
+      - desarrollador: Santiago
+  - action: action_animo_mejora_entendimiento
+
+### Funcionalidad: agradacimiento y despedida
+- story: El desarrollador agradece y se le ofrece más ayuda.
+  steps:
+  - intent: agradecer
+  - action: utter_ofrecer_mas_ayuda
